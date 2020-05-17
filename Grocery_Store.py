@@ -13,7 +13,7 @@ store_items = {
 user_bought = {}
 
 # printing store items
-print('\nWelcome to R Store. Please go ahead to buy something.\nOur store has :->\n')
+print('\nWelcome to Z Store. Please go ahead to buy something.\nOur store has :->\n')
 for product, price in store_items.items():
     if 'Oil' in product:
         print(f'{product} : ${price}/liter.')
@@ -37,7 +37,7 @@ while True:
 
     user_bought[products] = quantities
     user_said = input('Want more ? (Y/N) : ').lower()
-    
+
     if ('y' in user_said) and ('n' in user_said) and (user_said != True):
         user_said = input('Invalid keyword. Type again : ')
 
@@ -51,6 +51,13 @@ total = 0
 print('\n')
 for product, quantity in user_bought.items():
     total += store_items[product] * quantity
+    x=int(total)
+
+# adding round off feature to ease payment (Indian:)    
+    if total-x >=.5:
+        total =  total
+    else:
+        total = total-(total-x)
     if 'Oil' in product:
         print(f'{product} :${store_items[product]}/liter X {quantity}liter =  ${store_items[product] * quantity}')
 
